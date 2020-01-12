@@ -1,30 +1,36 @@
 import S from '@sanity/desk-tool/structure-builder'
-import MdSettings from 'react-icons/lib/md/settings'
+// import MdSettings from 'react-icons/lib/md/settings'
+import FaFire from 'react-icons/lib/fa/fire'
 
 const hiddenDocTypes = listItem =>
-  !['category', 'person', 'sampleProject', 'siteSettings'].includes(listItem.getId())
+  !['category', 'person', 'sampleProject', 'siteSettings', 'product'].includes(listItem.getId())
 
 export default () =>
   S.list()
     .title('Content')
     .items([
+      // S.listItem()
+      //   .title('Settings')
+      //   .child(
+      //     S.editor()
+      //       .id('siteSettings')
+      //       .schemaType('siteSettings')
+      //       .documentId('siteSettings')
+      //   )
+      //   .icon(MdSettings),
       S.listItem()
-        .title('Settings')
-        .child(
-          S.editor()
-            .id('siteSettings')
-            .schemaType('siteSettings')
-            .documentId('siteSettings')
-        )
-        .icon(MdSettings),
-      S.listItem()
-        .title('Sample projects')
-        .schemaType('sampleProject')
-        .child(S.documentTypeList('sampleProject').title('Sample projects')),
-      S.listItem()
-        .title('People')
-        .schemaType('person')
-        .child(S.documentTypeList('person').title('People')),
+        .title('Products')
+        .schemaType('product')
+        .child(S.documentTypeList('product').title('Products'))
+        .icon(FaFire),
+      // S.listItem()
+      //   .title('Sample projects')
+      //   .schemaType('sampleProject')
+      //   .child(S.documentTypeList('sampleProject').title('Sample projects')),
+      // S.listItem()
+      //   .title('People')
+      //   .schemaType('person')
+      //   .child(S.documentTypeList('person').title('People')),
       S.listItem()
         .title('Categories')
         .schemaType('category')
